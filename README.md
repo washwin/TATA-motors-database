@@ -17,7 +17,8 @@ git commit -m "message"
 git checkout main
 Then you merge:
 git merge ashwin
-7) Push it in main
+7) Now you may get a conflict message here. If so then resolve conflicts in vs code. Once all conflicts are resolved, commit in main. CHECK if it is working. Kindly contact if otherwise. Then move forward
+8) Push it in main
 git push
-8) Remember you can only commit in your own branch and not push.
-9) You will NOT commit in main branch, only merge and push.
+9) Remember you cannot push in your own branch, only commit.
+10) You will NOT commit in main branch(except in merge conflicts), only merge and push.
