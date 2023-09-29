@@ -1,18 +1,19 @@
 import psycopg2
 
 def main(usr, psswd): 
-    connection = psycopg2.connect(
+    connection = psycopg2.connect(database="postgres",
                             host="localhost",
                             user=usr,
                             password=psswd,
                             port=5432)
     cursor = connection.cursor()
-    sql_query = "SELECT FROM pg_database WHERE datname = 'tatadb'"
+    sql_query = """SELECT FROM pg_database WHERE datname = 'tatadb'"""
     cursor.execute(sql_query)
-    if(len(cursor.fetchall())==0):
+    l = len(cursor.fetchall())
+    if(l==0):
         print("DATABASE DOES NOT EXIST")              
     else:
-        sql_query = "DROP DATABASE tatadb"
+        sql_query = """SELECT 'DROP DATABASE tatadb' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'tatadb')"""
         cursor.execute(sql_query)
         print("DATABASE DELETED")
     cursor.close()
