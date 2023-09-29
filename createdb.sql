@@ -1,1 +1,1 @@
-CREATE DATABASE tatadb;
+CREATE DATABASE tatb;
