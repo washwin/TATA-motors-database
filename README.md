@@ -4,7 +4,7 @@ INSTRUCTIONS TO USE GIT
 git checkout ashwin
 2) Always take a pull before you start working. Make sure you are pulling from main branch
 and not from your own branch! Use the command:
-git pull origin master
+git pull origin main
 3) After making changes in your branch check it! Use:
 git status
 4) After making sure the code is in working condition stage it. Use:
