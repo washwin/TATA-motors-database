@@ -1,6 +1,6 @@
 # TATA-motors-database
 INSTRUCTIONS TO USE GIT
-1) Always work in your own branch. Go to your branch using:
+1) Always work in your own branch. Go to your branch(ashwin, tejal, dhrutika) using:
 git checkout ashwin
 2) Always take a pull before you start working. Make sure you are pulling from main branch
 and not from your own branch! Use the command:
