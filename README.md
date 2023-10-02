@@ -13,12 +13,13 @@ OR
 git add filename
 5) Commit these changes in your branch and use appropriate message. Use:
 git commit -m "message"
-6) Now merge it with main branch. First you need to checkout to main 
+6) Now merge it with main branch. First you need to checkout to main: 
 git checkout main
 Then you merge:
 git merge ashwin
 7) Now you may get a conflict message here. If so then resolve conflicts in vs code. Once all conflicts are resolved, commit in main. CHECK if it is working. Kindly contact if otherwise. Then move forward
-8) Push it in main
+8) Push it in main:
 git push
 9) Remember you cannot push in your own branch, only commit.
 10) You will NOT commit in main branch(except in merge conflicts), only merge and push.
+11) Once done working, kindly checkout to you rown branch. Maake sure you are not in main.
