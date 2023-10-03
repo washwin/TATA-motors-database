@@ -6,21 +6,15 @@ def main(usr, psswd):
                             user=usr,
                             password=psswd,
                             port=5432)
+    connection.autocommit = True
     cursor = connection.cursor()
-    sql_query = """SELECT FROM pg_database WHERE datname = 'tatadb'"""
-    cursor.execute(sql_query)
-    # print(len(cursor.fetchall()))
-    l = len(cursor.fetchall())
-    if(l==0):
-        sql_query = "CREATE DATABASE tatadb"
-        sql_query = """SELECT 'CREATE DATABASE tatadb' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'tatadb')"""
+    try:
+        sql_query = ''' CREATE database tatadb ''';    
         cursor.execute(sql_query)
         print("DATABASE CREATED")
-    else:
-        sql_query = "SELECT 'CREATE DATABASE tatadb' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'tatadb')"
-        cursor.execute(sql_query)
-        print("DATABASE ALREADY EXISTS")              
-    cursor.close()
-    connection.close()
+    except psycopg2.Error as e:
+        print(e)
+    finally:
+        connection.close()
 
 main("postgres","2202")
