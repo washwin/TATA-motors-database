@@ -1,9 +1,7 @@
 import psycopg2
 import csv
-import os
 
 def main(usr,psswd):
-    # path = 
     try:
         with psycopg2.connect(database='tatadb',
                             host="localhost",
