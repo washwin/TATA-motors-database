@@ -13,4 +13,4 @@ def main():
     populate.main(usr,psswd)
 
 main()
-print("INITIALIZATION SUCCESSFUL")
+print("INITIALIZATION SUCCESSFUL!")
