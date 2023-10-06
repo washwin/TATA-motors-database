@@ -13,6 +13,7 @@ def main(usr, psswd):
         cursor.execute(sql_query)
         print("DATABASE CREATED")
     except psycopg2.Error as e:
+        print("!!!!!!!!!!!!!CREATE DATABASE UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
     finally:
         connection.close()

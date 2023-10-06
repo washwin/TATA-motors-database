@@ -13,6 +13,7 @@ def update(usr,psswd,update_query):
                 connection.commit()
                 print("UPDATE SUCCESSFUL")
     except psycopg2.Error as e:
+        print("!!!!!!!!!!!!!UPDATE UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
         connection.rollback()
     finally:

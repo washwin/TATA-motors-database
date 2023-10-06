@@ -13,6 +13,7 @@ def main(usr, psswd):
         cursor.execute(sql_query)
         print("DATABASE DELETED")
     except psycopg2.Error as e:
+        print("!!!!!!!!!!!!!DELETE DATABASE UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
     finally:
         connection.close()

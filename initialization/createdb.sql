@@ -1,2 +1,0 @@
-DROP DATABASE tatadb;
-CREATE DATABASE tatadb;

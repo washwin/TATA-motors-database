@@ -95,21 +95,16 @@ def main(usr,psswd):
 
             with connection.cursor() as cursor:                
                 cursor.execute(customer())
-                print("CREATED TABLE")
                 cursor.execute(vehicle())
-                print("CREATED TABLE")
                 cursor.execute(sales())
-                print("CREATED TABLE")
                 cursor.execute(employee())
-                print("CREATED TABLE")
                 cursor.execute(supplier())
-                print("CREATED TABLE")
                 cursor.execute(parts_inventory())
-                print("CREATED TABLE")
                 cursor.execute(employee_training())
-                print("CREATED TABLE")
                 connection.commit()
+                print("ALL TABLES CREATED")
     except psycopg2.Error as e:
+        print("!!!!!!!!!!!!!CREATE TABLES UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
         connection.rollback()
     finally:

@@ -17,6 +17,7 @@ def main(usr,psswd):
                         cursor.execute(sql_query)
                         connection.commit()
     except psycopg2.Error as e:
+        print("!!!!!!!!!!!!!POPULATE TABLE UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
         connection.rollback()
     finally:
