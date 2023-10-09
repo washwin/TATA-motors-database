@@ -1,15 +1,14 @@
 Entities and Tables:
 
 Customers Table
-
 CustomerID (Primary Key)
 FirstName
 LastName
 Email
 Phone
 Address
-Vehicles Table
 
+Vehicles Table
 VehicleID (Primary Key)
 Make
 Model
@@ -20,16 +19,16 @@ Price
 StockQuantity
 EngineType
 FuelType
-Sales Table
 
+Sales Table
 SaleID (Primary Key)
 CustomerID (Foreign Key)
 VehicleID (Foreign Key)
 SaleDate
 SalePrice
 PaymentMethod
-Employees Table
 
+Employees Table
 EmployeeID (Primary Key)
 FirstName
 LastName
@@ -38,8 +37,8 @@ Phone
 Address
 JobTitle
 Department
-Service Appointments Table
 
+Service Appointments Table
 AppointmentID (Primary Key)
 CustomerID (Foreign Key)
 VehicleID (Foreign Key)
@@ -47,36 +46,39 @@ AppointmentDate
 ServiceType
 ServiceDescription
 ServiceStatus
-Suppliers Table
 
+Suppliers Table
 SupplierID (Primary Key)
 SupplierName
 ContactName
 Email
 Phone
 Address
-Parts Inventory Table
 
+Parts Inventory Table
 PartID (Primary Key)
 PartName
 SupplierID (Foreign Key)
 InStockQuantity
 UnitPrice
 ReorderLevel
-Employee Training Table
 
+Employee Training Table
 TrainingID (Primary Key)
 EmployeeID (Foreign Key)
 TrainingName
 TrainingDate
 TrainingDuration
-Finance Transactions Table
 
+Finance Transactions Table
 TransactionID (Primary Key)
 TransactionDate
 TransactionType (e.g., Income, Expense)
 Amount
 Description
+
+
+
 Relationships:
 
 Customers can make Sales (1-to-Many relationship).
