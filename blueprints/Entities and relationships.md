@@ -1,7 +1,7 @@
-Entities and Tables:
+#Entities and Tables
 
-Customers Table
-CustomerID (Primary Key)
+Clients Table
+ClientID (Primary Key)
 FirstName
 LastName
 Email
@@ -22,7 +22,7 @@ FuelType
 
 Sales Table
 SaleID (Primary Key)
-CustomerID (Foreign Key)
+ClientID (Foreign Key)
 VehicleID (Foreign Key)
 SaleDate
 SalePrice
@@ -40,7 +40,7 @@ Department
 
 Service Appointments Table
 AppointmentID (Primary Key)
-CustomerID (Foreign Key)
+ClientID (Foreign Key)
 VehicleID (Foreign Key)
 AppointmentDate
 ServiceType
@@ -81,9 +81,9 @@ Description
 
 Relationships:
 
-Customers can make Sales (1-to-Many relationship).
+Clients can make Sales (1-to-Many relationship).
 Vehicles can be sold in Sales (1-to-Many relationship).
-Customers can have Service Appointments (1-to-Many relationship).
+Clients can have Service Appointments (1-to-Many relationship).
 Vehicles can have Service Appointments (1-to-Many relationship).
 Parts in the Parts Inventory are supplied by Suppliers (Many-to-1 relationship).
 Employees can undergo Employee Training (1-to-Many relationship).
