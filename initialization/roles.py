@@ -27,13 +27,14 @@ def main(usr,psswd):
                 cursor.execute(boss())
                 connection.commit()
                 print("ALL ROLES CREATED")
-                
+            cursor.close()
+        connection.close()
+    except psycopg2.OperationalError as e:
+        print("INVALID CREDENTIALS")
+        
     except psycopg2.Error as e:
         print("!!!!!!!!!!!!!CREATE ROLES UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
         connection.rollback()
-    finally:
-        cursor.close()
-        connection.close()
 
-main("postgres", "2202")
+# main("postgres", "2202")
