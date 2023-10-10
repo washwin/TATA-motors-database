@@ -13,6 +13,5 @@ def main():
     tables.main(usr,psswd)
     populate.main(usr,psswd)
     roles.main(usr,psswd)
-    print("INITIALIZATION SUCCESSFUL!")
     
 main()

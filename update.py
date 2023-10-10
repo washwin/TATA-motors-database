@@ -32,7 +32,7 @@ def update(usr,psswd):
                 connection.commit()
                 print("UPDATE SUCCESSFUL")
                 cursor.close()
-            connection.close()
+        connection.close()
     except psycopg2.OperationalError as e:
         print("INVALID CREDENTIALS")
         # print(e)
