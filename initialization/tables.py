@@ -1,8 +1,8 @@
 import psycopg2
 
-def customer():
-    sql_query = """CREATE TABLE customer(
-    customer_id INT NOT NULL PRIMARY KEY,
+def client():
+    sql_query = """CREATE TABLE client(
+    client_id INT NOT NULL PRIMARY KEY,
     first_name VARCHAR(20),
     last_name VARCHAR(20),
     email VARCHAR(20),
@@ -29,9 +29,9 @@ def vehicle():
 def sales():
     sql_query = """CREATE TABLE sales(
     sales_id INT NOT NULL PRIMARY KEY,
-    customer_id INT NOT NULL,
+    client_id INT NOT NULL,
     vehicle_id INT NOT NULL,
-    CONSTRAINT fk_tata_sales1 FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
+    CONSTRAINT fk_tata_sales1 FOREIGN KEY(client_id) REFERENCES client(client_id),
     CONSTRAINT fk_tata_sales2 FOREIGN KEY(vehicle_id) REFERENCES vehicle(vehicle_id),
     sales_date DATE,
     sales_price INT,
@@ -94,7 +94,7 @@ def main(usr,psswd):
                             port=5432) as connection:
 
             with connection.cursor() as cursor:                
-                cursor.execute(customer())
+                cursor.execute(client())
                 cursor.execute(vehicle())
                 cursor.execute(sales())
                 cursor.execute(employee())
