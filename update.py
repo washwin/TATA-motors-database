@@ -1,4 +1,5 @@
 import psycopg2
+import getpass
 
 def display():
     print("SELECT TABLE FOR UPDATION:")
@@ -54,7 +55,7 @@ def client():
 
 def main():
     usr = input("Enter username (usually postgres) : ")
-    psswd = input("Enter password : ")
+    psswd = getpass.getpass("Enter password : ")
     update(usr,psswd)
 
 main()
