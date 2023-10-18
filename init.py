@@ -7,11 +7,8 @@ from initialization import roles
 
 
 def main():
-    # usr = input("Enter username (usually postgres) : ")
-    # psswd = getpass.getpass("Enter password : ")
-
-    usr = "postgres"
-    psswd = "2202"
+    usr = input("Enter username (usually postgres) : ")
+    psswd = getpass.getpass("Enter password : ")
 
     deletedb.main(usr,psswd)
     createdb.main(usr,psswd)
