@@ -70,4 +70,4 @@ def main():
     psswd = getpass.getpass("Enter password : ")
     update(usr,psswd)
 
-main()
+# main()
