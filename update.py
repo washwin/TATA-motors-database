@@ -5,7 +5,7 @@ def display():
     print("SELECT TABLE FOR UPDATION:")
     print("(1)Client")
     print("(2)Employee")
-    print("(3)Employee Training")
+    print("(3)Model")
     print("(4)Parts Inventory")
     print("(5)Sales")
     print("(6)Supplier")
@@ -24,6 +24,8 @@ def update(usr,psswd):
             match i:
                 case "1": 
                     update_query = client()
+                case "2":
+                    update_query = employee()
                 case _: 
                     print("INVALID INPUT!!")
                     exit()
@@ -44,14 +46,24 @@ def update(usr,psswd):
 
 def client():
     print("Enter the following details of client")
-    cid = input("client id : ")
+    name = input("Client name : ")
+    company = input("Company : ")
+    email = input("Email : ")
+    update_query = "INSERT INTO client (client_name,company_name,email) VALUES (\'" + name + "\',\'" + company + "\',\'" + email + "\');"
+    return update_query
+
+def employee():
+    print("Enter the following details of employee")
     fname = input("First name : ")
     lname = input("Last name : ")
     email = input("Email : ")
-    phone = input("Phone no : ")
+    phno = input("Phone : ")
     address = input("Address(without commas) : ")
-    update_query = "INSERT INTO client VALUES (" + cid + ",\'" + fname + "\',\'" + lname + "\',\'" + email + "\',\'" + phone + "\',\'" + address + "\');"
+    desgn = input("Designation : ")
+    dept = input("Department : ")
+    update_query = "INSERT INTO client (client_name,company_name,email) VALUES (\'" + fname + "\',\'" + lname + "\',\'" + email + "\',"  +phno+ ",\'" +address+ "\',\'" +desgn+ "\'," +dept+ ");"
     return update_query
+
 
 def main():
     usr = input("Enter username (usually postgres) : ")
