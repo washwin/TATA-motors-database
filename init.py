@@ -14,6 +14,6 @@ def main():
     createdb.main(usr,psswd)
     tables.main(usr,psswd)
     populate.main(usr,psswd)
-    # roles.main(usr,psswd)
+    roles.main(usr,psswd)
     
 main()

@@ -1,15 +1,12 @@
 import psycopg2
 
-def client():
-    sql_query = """CREATE USER client with password '12345';"""
-    return sql_query
-
 def employee():
     sql_query = """CREATE USER employee with password '12345';"""
     return sql_query
 
 def boss():
-    sql_query = """CREATE USER boss with password '12345';"""
+    sql_query = """CREATE USER boss with password '12345';
+                    GRANT SELECT, INSERT, UPDATE, DELETE ON employee, client, client_client_id_seq TO boss;"""
     return sql_query
 
 
@@ -21,8 +18,7 @@ def main(usr,psswd):
                             password=psswd,
                             port=5432) as connection:
 
-            with connection.cursor() as cursor:  
-                cursor.execute(client())
+            with connection.cursor() as cursor:
                 cursor.execute(employee())
                 cursor.execute(boss())
                 connection.commit()

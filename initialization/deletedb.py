@@ -10,7 +10,11 @@ def main(usr, psswd):
         connection.autocommit = True
         cursor = connection.cursor()
 
-        sql_query = ''' DROP database tatadb ''';    
+        sql_query = ''' DROP database tatadb '''    
+        cursor.execute(sql_query)
+        sql_query = ''' DROP USER IF EXISTS employee'''
+        cursor.execute(sql_query)
+        sql_query = ''' DROP USER IF EXISTS boss'''
         cursor.execute(sql_query)
         print("DATABASE DELETED")
         connection.close()
