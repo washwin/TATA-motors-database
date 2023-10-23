@@ -25,7 +25,7 @@ def employee():
     email VARCHAR(40),
     phone_no VARCHAR(40),
     address VARCHAR(40),
-    designation VARCHAR(15),
+    designation VARCHAR(40),
     salary INT,
     department_id INT NOT NULL,
     CONSTRAINT fk_tata_employee FOREIGN KEY(department_id) REFERENCES department(department_id)
