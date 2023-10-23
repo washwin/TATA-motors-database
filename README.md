@@ -6,4 +6,4 @@
 # NOTE: running init.py also deletes existing tatadb if present
 # Also, two users namely employee and boss have been created with restricted database access to them
 # Use view.py to view tables present in the database
-# Use update.py to update rows in tables 
+* Use update.py to update rows in tables 
