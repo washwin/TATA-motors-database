@@ -28,7 +28,7 @@ def employee():
     designation VARCHAR(40),
     salary INT,
     department_id INT NOT NULL,
-    CONSTRAINT fk_tata_employee FOREIGN KEY(department_id) REFERENCES department(department_id)
+    CONSTRAINT fk_tata_employee FOREIGN KEY(department_id) REFERENCES department(department_id) ON DELETE CASCADE
     );"""
     return sql_query
 
@@ -61,7 +61,7 @@ def vehicle():
     color VARCHAR(10),
     year INT,
     price INT,
-    CONSTRAINT fk_tata_vehicle1 FOREIGN KEY(model_id) REFERENCES model(model_id)
+    CONSTRAINT fk_tata_vehicle1 FOREIGN KEY(model_id) REFERENCES model(model_id) ON DELETE CASCADE
     );"""
     return sql_query
 
@@ -69,12 +69,14 @@ def sales():
     sql_query = """CREATE TABLE sales(
     sales_id SERIAL PRIMARY KEY,
     client_id INT NOT NULL,
+    employee_id INT NOT NULL,
     vehicle_id INT NOT NULL UNIQUE,
     sales_date DATE,
     sales_price INT,
     status VARCHAR(10),
-    CONSTRAINT fk_tata_sales1 FOREIGN KEY(client_id) REFERENCES client(client_id),
-    CONSTRAINT fk_tata_sales2 FOREIGN KEY(vehicle_id) REFERENCES vehicle(vehicle_id)
+    CONSTRAINT fk_tata_sales1 FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE,
+    CONSTRAINT fk_tata_sales2 FOREIGN KEY(vehicle_id) REFERENCES vehicle(vehicle_id) ON DELETE CASCADE,
+    CONSTRAINT fk_tata_sales3 FOREIGN KEY(employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE
     );"""
     return sql_query
 
@@ -86,8 +88,8 @@ def parts_inventory():
     employee_id INT NOT NULL,
     in_stock_quantity INT,
     unit_price INT,
-    CONSTRAINT fk_tata_inven1 FOREIGN KEY(supplier_id) REFERENCES supplier(supplier_id),
-    CONSTRAINT fk_tata_inven2 FOREIGN KEY(employee_id) REFERENCES employee(employee_id)
+    CONSTRAINT fk_tata_inven1 FOREIGN KEY(supplier_id) REFERENCES supplier(supplier_id) ON DELETE CASCADE,
+    CONSTRAINT fk_tata_inven2 FOREIGN KEY(employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE
     );"""
     return sql_query
 
@@ -96,8 +98,8 @@ def factory():
     employee_id INT NOT NULL,
     vehicle_id INT NOT NULL,
     work VARCHAR(40),
-    CONSTRAINT fk_tata_factory1 FOREIGN KEY(employee_id) REFERENCES employee(employee_id),
-    CONSTRAINT fk_tata_factory2 FOREIGN KEY(vehicle_id) REFERENCES vehicle(vehicle_id)
+    CONSTRAINT fk_tata_factory1 FOREIGN KEY(employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE,
+    CONSTRAINT fk_tata_factory2 FOREIGN KEY(vehicle_id) REFERENCES vehicle(vehicle_id) ON DELETE CASCADE
     )"""
     return sql_query
 

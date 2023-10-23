@@ -1,12 +1,13 @@
 import psycopg2
 
 def employee():
-    sql_query = """CREATE USER employee with password '12345';"""
+    sql_query = """CREATE USER employee with password '12345';
+                    GRANT SELECT,INSERT,UPDATE,DELETE ON sales, sales_sales_id_seq,client, client_client_id_seq,parts_inventory,parts_inventory_part_id_seq, vehicle,vehicle_vehicle_id_seq,model,model_model_id_seq,factory, supplier_supplier_id_seq,supplier TO employee;"""
     return sql_query
 
 def boss():
     sql_query = """CREATE USER boss with password '12345';
-                    GRANT SELECT, INSERT, UPDATE, DELETE ON employee, client, client_client_id_seq TO boss;"""
+                    GRANT SELECT, INSERT, UPDATE, DELETE ON employee, sales, sales_sales_id_seq,client, client_client_id_seq,parts_inventory,parts_inventory_part_id_seq, vehicle,vehicle_vehicle_id_seq,model,model_model_id_seq,factory, supplier_supplier_id_seq,supplier TO boss;"""
     return sql_query
 
 

@@ -5,11 +5,13 @@ def display():
     print("SELECT TABLE FOR UPDATION:")
     print("(1)Client")
     print("(2)Employee")
-    print("(3)Employee Training")
+    print("(3)Department")
     print("(4)Parts Inventory")
     print("(5)Sales")
     print("(6)Supplier")
     print("(7)Vehicle")
+    print("(8)Model")
+    print("(9)Factory")
 
 def client():
     sql_query = """SELECT * FROM client;"""

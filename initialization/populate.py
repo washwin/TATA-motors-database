@@ -55,7 +55,7 @@ def main(usr,psswd):
                 with open(".\sample_data\sales.csv", "r") as ip:
                     csv_reader = csv.reader(ip)
                     for record in csv_reader:
-                        sql_query = "INSERT INTO sales (client_id,vehicle_id,sales_date,sales_price,status) VALUES (" + record[0] + "," + record[1] + ",\'" + record[2] + "\'," + record[3] + ",\'" + record[4] + "\');"
+                        sql_query = "INSERT INTO sales (client_id,employee_id,vehicle_id,sales_date,sales_price,status) VALUES (" + record[0] + "," + record[1] + "," + record[2] + ",\'" + record[3] + "\'," + record[4] + ",\'" + record[5] + "\');"
                         cursor.execute(sql_query)
                         connection.commit()
 
