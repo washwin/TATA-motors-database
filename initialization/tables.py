@@ -58,7 +58,7 @@ def vehicle():
     sql_query = """CREATE TABLE vehicle(
     vehicle_id SERIAL PRIMARY KEY,
     model_id INT NOT NULL,
-    color VARCHAR(10),
+    color VARCHAR(20),
     year INT,
     price INT,
     CONSTRAINT fk_tata_vehicle1 FOREIGN KEY(model_id) REFERENCES model(model_id) ON DELETE CASCADE
