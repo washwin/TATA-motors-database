@@ -74,12 +74,7 @@ def execute(usr,psswd,update_query):
 
 
 def update(usr,psswd,selected_option, selected_type):
-    # try:
-    #     with psycopg2.connect(database='tatadb',
-    #                         host="localhost",
-    #                         user=usr,
-    #                         password=psswd,
-    #                         port=5432) as connection:
+    
     i = selected_option
     j=selected_type
     print(i+"\n"+j)
@@ -184,25 +179,6 @@ def update(usr,psswd,selected_option, selected_type):
                     print("INVALID OPTION")
         case _:
             print("INVALID INPUT")
-
-
-
-    #         with connection.cursor() as cursor:
-    #             cursor.execute(update_query)
-    #             connection.commit()
-    #             print("UPDATE SUCCESSFUL")
-    #             cursor.close()
-    #     connection.close()
-    # except psycopg2.OperationalError as e:
-    #     print("INVALID CREDENTIALS")
-    #     # print(e)
-    # except psycopg2.Error as e:
-    #     #print(f"Error updating employee's promotion: {e}")
-    #     print("!!!!!!!!!!!!!UPDATE UNSUCCESSFUL!!!!!!!!!!!!!")
-    #     print(e)
-    #     connection.rollback()
-    # finally:
-    #     cursor.close()
 
 def add_client(usr,psswd):
     client_window = tk.Tk()

@@ -1,4 +1,5 @@
 import psycopg2
+from tkinter import messagebox
 
 def employee():
     sql_query = """CREATE USER employee with password '12345';
@@ -28,10 +29,13 @@ def main(usr,psswd):
         connection.close()
     except psycopg2.OperationalError as e:
         print("INVALID CREDENTIALS")
+        exit()
         
     except psycopg2.Error as e:
         print("!!!!!!!!!!!!!CREATE ROLES UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
         connection.rollback()
+        messagebox.showerror("TATA Motors Database", e)
+        exit()
 
 # main("postgres", "2202")

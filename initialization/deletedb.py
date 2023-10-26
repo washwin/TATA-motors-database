@@ -1,4 +1,5 @@
 import psycopg2
+from tkinter import messagebox
 
 def main(usr, psswd): 
     try:
@@ -16,14 +17,19 @@ def main(usr, psswd):
         cursor.execute(sql_query)
         sql_query = ''' DROP USER IF EXISTS boss'''
         cursor.execute(sql_query)
-        print("DATABASE DELETED")
+        # print("DATABASE DELETED")
         connection.close()
 
     except psycopg2.OperationalError as e:
-        print("INVALID CREDENTIALS")
+        # print("INVALID CREDENTIALS")
+        messagebox.showerror("TATA Motors Database", "INVALID CREDENTIALS\n\n{}".format(e))
+        exit()
     except psycopg2.Error as e:
-        print("!!!!!!!!!!!!!DELETE DATABASE UNSUCCESSFUL!!!!!!!!!!!!!")
-        print(e)
+        # print("!!!!!!!!!!!!!DELETE DATABASE UNSUCCESSFUL!!!!!!!!!!!!!")
+        # print(e)
+        messagebox.showerror("TATA Motors Database", e)
+        exit()
+
 
         
 

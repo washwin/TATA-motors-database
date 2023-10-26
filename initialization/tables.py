@@ -1,4 +1,5 @@
 import psycopg2
+from tkinter import messagebox
 
 def client():
     sql_query = """CREATE TABLE client(
@@ -49,8 +50,8 @@ def model():
     engine_type VARCHAR(40),
     fuel_type VARCHAR(20),
     dimensions VARCHAR(20),
-    zero_to_sixty INT,
-    km_per_litres INT
+    zero_to_sixty FLOAT,
+    km_per_litres FLOAT
     )"""
     return sql_query
 
@@ -73,7 +74,7 @@ def sales():
     vehicle_id INT NOT NULL UNIQUE,
     sales_date DATE,
     sales_price INT,
-    status VARCHAR(10),
+    status VARCHAR(15),
     CONSTRAINT fk_tata_sales1 FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE,
     CONSTRAINT fk_tata_sales2 FOREIGN KEY(vehicle_id) REFERENCES vehicle(vehicle_id) ON DELETE CASCADE,
     CONSTRAINT fk_tata_sales3 FOREIGN KEY(employee_id) REFERENCES employee(employee_id) ON DELETE CASCADE
@@ -128,10 +129,12 @@ def main(usr,psswd):
         connection.close()
     except psycopg2.OperationalError as e:
         print("INVALID CREDENTIALS")
+        exit()
 
     except psycopg2.Error as e:
         print("!!!!!!!!!!!!!CREATE TABLES UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
         connection.rollback()
+        messagebox.showerror("TATA Motors Database", e)
 
 # main("postgres","2402")

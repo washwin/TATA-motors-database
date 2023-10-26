@@ -1,4 +1,5 @@
 import psycopg2
+from tkinter import messagebox
 
 def main(usr, psswd): 
     try:
@@ -12,14 +13,17 @@ def main(usr, psswd):
 
         sql_query = ''' CREATE database tatadb ''';    
         cursor.execute(sql_query)
-        print("DATABASE CREATED")
+        # print("DATABASE CREATED")
         connection.close()
         
     except psycopg2.OperationalError as e:
         print("INVALID CREDENTIALS")
+        exit()
     except psycopg2.Error as e:
-        print("!!!!!!!!!!!!!CREATE DATABASE UNSUCCESSFUL!!!!!!!!!!!!!")
-        print(e)
+        # print("!!!!!!!!!!!!!CREATE DATABASE UNSUCCESSFUL!!!!!!!!!!!!!")
+        # print(e)
+        messagebox.showerror("TATA Motors Database", e)
+        exit()
 
         
 # main("postgres","2202")

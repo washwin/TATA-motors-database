@@ -1,6 +1,6 @@
 import psycopg2
 import csv
-
+from tkinter import messagebox
 def main(usr,psswd):
     try:
         with psycopg2.connect(database='tatadb',
@@ -77,11 +77,14 @@ def main(usr,psswd):
         connection.close()
     except psycopg2.OperationalError as e:
         print("INVALID CREDENTIALS")
-        print(e)
+        exit()
+        # print(e)
     except psycopg2.Error as e:
         print("!!!!!!!!!!!!!POPULATE TABLE UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
         connection.rollback()
+        messagebox.showerror("TATA Motors Database", e)
+        exit()
         
 
 # main("postgres","2202")
