@@ -10,28 +10,15 @@ sys.path.append(parent)
 
 def display(root,usr,psswd):
     message_label = tk.Label(root, text="SELECT TABLE FOR UPDATION")
-    message_label.pack()
+    message_label.pack(pady=10)
     selected_option = tk.StringVar()
-    radio_button1 = tk.Radiobutton(root, text="Client", variable=selected_option, value="1")
-    radio_button2 = tk.Radiobutton(root, text="Employee", variable=selected_option, value="2")
-    radio_button3 = tk.Radiobutton(root, text="Model", variable=selected_option, value="3")
-    radio_button4 = tk.Radiobutton(root, text="Parts Inventory", variable=selected_option, value="4")
-    radio_button5 = tk.Radiobutton(root, text="Sales", variable=selected_option, value="5")
-    radio_button6 = tk.Radiobutton(root, text="Supplier", variable=selected_option, value="6")
-    radio_button7 = tk.Radiobutton(root, text="Vehicle", variable=selected_option, value="7")
-    radio_button8 = tk.Radiobutton(root, text="Factory", variable=selected_option, value="8")
-    radio_button9 = tk.Radiobutton(root, text="Department", variable=selected_option, value="9")
-    radio_button_submit = tk.Button(root, text="Submit", command=lambda: type(root, selected_option.get(),usr,psswd))
-    radio_button1.pack()
-    radio_button2.pack()
-    radio_button3.pack()
-    radio_button4.pack()
-    radio_button5.pack()
-    radio_button6.pack()
-    radio_button7.pack()
-    radio_button8.pack()
-    radio_button9.pack()
-    radio_button_submit.pack()
+    options = ["Client", "Employee", "Model", "Parts Inventory", "Sales", "Supplier", "Vehicle", "Factory", "Department"]
+    selected_option.set(options[0])
+    option_menu = tk.OptionMenu(root, selected_option, *options)
+    option_menu.pack(pady=20)
+    submit_button = tk.Button(root, text="Submit", command=lambda: type(root, selected_option.get(),usr,psswd))
+    submit_button.pack(pady=20)
+
 
 def type(root,selected_option,usr,psswd):
     selected_type = tk.StringVar()
@@ -42,11 +29,11 @@ def type(root,selected_option,usr,psswd):
     radio_button1 = tk.Radiobutton(root, text="Add", variable=selected_type, value="1")
     radio_button2 = tk.Radiobutton(root, text="Delete", variable=selected_type, value="2")
     radio_button3 = tk.Radiobutton(root, text="Update", variable=selected_type, value="3")
-    radio_button_submit = tk.Button(root, text="Submit", command=lambda: update(usr,psswd,selected_option, selected_type.get()))
     radio_button1.pack()
     radio_button2.pack()
     radio_button3.pack()
-    radio_button_submit.pack()
+    submit = tk.Button(root, text="SUBMIT", command=lambda: update(usr,psswd,selected_option, selected_type.get()))
+    submit.pack()
 
 def execute(usr,psswd,update_query):
     try:
@@ -80,7 +67,7 @@ def update(usr,psswd,selected_option, selected_type):
     print(i+"\n"+j)
     update_query = ""
     match i:
-        case '1':
+        case 'Client':
             match j:
                 case '1':
                     add_client(usr,psswd)
@@ -91,7 +78,7 @@ def update(usr,psswd,selected_option, selected_type):
                 case _:
                     print("INVALID OPTION")
             
-        case '2':
+        case 'Employee':
             match j:
                 case '1':
                     update_query = add_employee()
@@ -102,7 +89,7 @@ def update(usr,psswd,selected_option, selected_type):
                 case _:
                     print("INVALID OPTION")
             
-        case '3':
+        case 'Model':
             match j:
                 case '1':
                     update_query = add_model()
@@ -113,7 +100,7 @@ def update(usr,psswd,selected_option, selected_type):
                 case _:
                     print("INVALID OPTION")
             
-        case '4':
+        case 'Parts Inventory':
             match j:
                 case '1':
                     update_query = add_part()
@@ -124,7 +111,7 @@ def update(usr,psswd,selected_option, selected_type):
                 case _:
                     print("INVALID OPTION")
             
-        case '5':
+        case 'Sales':
             match j:
                 case '1':
                     update_query = add_sale()
@@ -135,7 +122,7 @@ def update(usr,psswd,selected_option, selected_type):
                 case _:
                     print("INVALID OPTION")
             
-        case '6':
+        case 'Supplier':
             match j:
                 case '1':
                     update_query = add_supply()
@@ -146,7 +133,7 @@ def update(usr,psswd,selected_option, selected_type):
                 case _:
                     print("INVALID OPTION")
             
-        case '7':
+        case 'Vehicle':
             match j:
                 case '1':
                     update_query = add_veh()
@@ -157,7 +144,7 @@ def update(usr,psswd,selected_option, selected_type):
                 case _:
                     print("INVALID OPTION")
             
-        case '8':
+        case 'Factory':
             match j:
                 case '1':
                     update_query = add_factory()
@@ -167,7 +154,7 @@ def update(usr,psswd,selected_option, selected_type):
                     update_query = update_factory()
                 case _:
                     print("INVALID OPTION")
-        case '9':
+        case 'Dapartment':
             match j:
                 case '1':
                     update_query = add_dept()
@@ -199,7 +186,6 @@ def add_client(usr,psswd):
         company = company_entry.get()
         email = email_entry.get()
         
-        # Create a database connection and execute the SQL query to add the client
         try:
             conn = psycopg2.connect(database='tatadb', host='localhost', user=usr, password=psswd, port=5432)
             cursor = conn.cursor()
@@ -226,15 +212,7 @@ def add_client(usr,psswd):
     email_entry.pack()
     add_button.pack()
     
-    # Start the GUI main loop
     client_window.mainloop()
-    # print("Enter the following details of client")
-    
-    # name = input("Client name : ")
-    # company = input("Company : ")
-    # email = input("Email : ")
-    # update_query = "INSERT INTO client (client_name,company_name,email) VALUES (\'" + name + "\',\'" + company + "\',\'" + email + "\');"
-    # return update_query
 
 def del_client():
     print("Enter the following details of client")
