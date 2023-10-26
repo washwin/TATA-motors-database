@@ -54,10 +54,29 @@ def update_button_click():
     update_button = tk.Button(update_window, text="SUBMIT", command=lambda: run_update_script(username_entry.get(), password_entry.get(), update_window), width=20, height=2)
     update_button.pack(pady=20) 
 
-# def update_button_click():
-#     open_update_gui()
+def delete_button_click():
+    initilization_window = tk.Toplevel(root)  # Create a new window
+    initilization_window.title("Initilize Database")
+    initilization_window.iconbitmap('./blueprints/tata.ico')
+    initilization_window.geometry("400x250")
+    username_label = tk.Label(initilization_window, text="USERNAME:")
+    username_label.pack(pady=5)
+    username_entry = tk.Entry(initilization_window)
+    username_entry.pack(pady=10)
+    password_label = tk.Label(initilization_window, text="PASSWORD:")
+    password_label.pack(pady=5)
+    password_entry = tk.Entry(initilization_window, show="*")
+    password_entry.pack(pady=10)
+    update_button = tk.Button(initilization_window, text="SUBMIT", command=lambda: run_delete_script(username_entry.get(), password_entry.get(), initilization_window), width=20, height=2)
+    update_button.pack(pady=20) 
 
-
+def run_delete_script(username, password, initialization_window):
+    script_path = "./initialization/deletedb.py"
+    if os.path.exists(script_path):
+        result = subprocess.run(["python", script_path, username, password], capture_output=True, text=True)
+    else:
+        messagebox.showerror("Script Not Found", "Initialization script not found at the specified path.")
+    initialization_window.destroy()
 
 root = tk.Tk()
 root.title("TATA Motors Database")
@@ -72,7 +91,7 @@ update_button = tk.Button(root, text="UPDATE DATABASE", command=update_button_cl
 update_button.pack(pady=10)
 view_button = tk.Button(root, text="VIEW DATABASE", command=update_button_click, width=30, height=2)
 view_button.pack(pady=10)
-delete_button = tk.Button(root, text="DELETE DATABASE", command=update_button_click, width=30, height=2)
+delete_button = tk.Button(root, text="DELETE DATABASE", command=delete_button_click, width=30, height=2)
 delete_button.pack(pady=10)
 
 root.mainloop()

@@ -1,4 +1,5 @@
 import psycopg2
+import sys
 from tkinter import messagebox
 
 def main(usr, psswd): 
@@ -28,9 +29,15 @@ def main(usr, psswd):
         # print("!!!!!!!!!!!!!DELETE DATABASE UNSUCCESSFUL!!!!!!!!!!!!!")
         # print(e)
         messagebox.showerror("TATA Motors Database", e)
-        exit()
 
 
-        
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: init.py <username> <password>")
+    else:
+        username = sys.argv[1]
+        password = sys.argv[2]
+        main(username, password)
 
 # main("postgres","2202")
