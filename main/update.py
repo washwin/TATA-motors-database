@@ -11,6 +11,7 @@ def display():
     print("(6)Supplier")
     print("(7)Vehicle")
     print("(8)Factory")
+    print("(9)Department")
 
 def type():
     print("SELECT TYPE OF UPDATION:")
@@ -30,71 +31,106 @@ def update(usr,psswd):
             type()
             j=input("Choose the type of update : ")
             update_query = ""
-            if(i=='1'):
-                if(j=='1'):
-                    update_query = add_client()
-                elif(j=='2'):
-                    update_query = del_client()
-                else:
-                    print("NOT AVAILABALE OPTION")
-
-            elif(i=='2'):
-                if(j=='1'):
-                    update_query = add_employee()
-                elif(j=='2'):
-                    update_query = del_employee()
-                else:
-                    update_query=update_employee()
-
-            elif(i=='3'):
-                if(j=='1'):
-                    update_query = add_model()
-                elif(j=='2'):
-                    update_query = del_model()
-                else:
-                    print("NOT AVAILABALE OPTION")
-
-            elif(i=='4'):
-                if(j=='1'):
-                    update_query = add_part()
-                elif(j=='2'):
-                    update_query = del_part()
-                else:
-                    update_query=update_part()
-
-            elif(i=='5'):
-                if(j=='1'):
-                    update_query = add_sale()
-                elif(j=='3'):
-                    update_query = update_sale()
-                else:
-                    print("NOT AVAILABALE OPTION")
-
-            elif(i=='6'):
-                if(j=='1'):
-                    update_query = add_supply()
-                elif(j=='2'):
-                    update_query = del_supply()
-                else:
-                    print("NOT AVAILABALE OPTION")
-
-            elif(i=='7'):
-                if(j=='1'):
-                    update_query = add_veh()
-                elif(j=='2'):
-                    update_query = del_veh()
-                else:
-                    print("NOT AVAILABALE OPTION")
-
-            elif(i=='8'):
-                if(j=='1'):
-                    update_query = add_worker()
-                elif(j=='2'):
-                    update_query = del_veh()
-                else:
-                    print("NOT AVAILABALE OPTION")
-
-
+            match i:
+                case '1':
+                    match j:
+                        case '1':
+                            update_query = add_client()
+                        case '2':
+                            update_query = del_client()
+                        case '3':
+                            update_query = update_client()
+                        case _:
+                            print("INVALID OPTION")
+                    
+                case '2':
+                    match j:
+                        case '1':
+                            update_query = add_employee()
+                        case '2':
+                            update_query = del_employee()
+                        case '3':
+                            update_query = update_employee()
+                        case _:
+                            print("INVALID OPTION")
+                    
+                case '3':
+                    match j:
+                        case '1':
+                            update_query = add_model()
+                        case '2':
+                            update_query = del_model()
+                        case '3':
+                            update_query = update_model()
+                        case _:
+                            print("INVALID OPTION")
+                    
+                case '4':
+                    match j:
+                        case '1':
+                            update_query = add_part()
+                        case '2':
+                            update_query = del_part()
+                        case '3':
+                            update_query = update_part()
+                        case _:
+                            print("INVALID OPTION")
+                    
+                case '5':
+                    match j:
+                        case '1':
+                            update_query = add_sale()
+                        case '2':
+                            update_query = del_sale()
+                        case '3':
+                            update_query = update_sale()
+                        case _:
+                            print("INVALID OPTION")
+                    
+                case '6':
+                    match j:
+                        case '1':
+                            update_query = add_supply()
+                        case '2':
+                            update_query = del_supply()
+                        case '3':
+                            update_query = update_supply()
+                        case _:
+                            print("INVALID OPTION")
+                    
+                case '7':
+                    match j:
+                        case '1':
+                            update_query = add_veh()
+                        case '2':
+                            update_query = del_veh()
+                        case '3':
+                            update_query = update_veh()
+                        case _:
+                            print("INVALID OPTION")
+                    
+                case '8':
+                    match j:
+                        case '1':
+                            update_query = add_factory()
+                        case '2':
+                            update_query = del_factory()
+                        case '3':
+                            update_query = update_factory()
+                        case _:
+                            print("INVALID OPTION")
+                case '9':
+                    match j:
+                        case '1':
+                            update_query = add_dept()
+                        case '2':
+                            update_query = del_dept()
+                        case '3':
+                            update_query = update_dept()
+                        case _:
+                            print("INVALID OPTION")
+                case _:
+                    print("INVALID INPUT")
 
             with connection.cursor() as cursor:
                 cursor.execute(update_query)
@@ -127,6 +163,13 @@ def del_client():
     update_query = f"DELETE FROM client WHERE client_id={id};"
     return update_query
 
+def update_client():
+    id = input("Enter Employee ID : ")
+    role=input("Enter the new designation")
+    salary = input("Enter new employee salary : ")
+    update_query=f"UPDATE employee SET designation='{role}' salary={salary} WHERE employee_id={id};"
+    return update_query
+
 def add_employee():
     print("Enter the following details of employee")
     fname = input("First name : ")
@@ -149,7 +192,7 @@ def update_employee():
     id = input("Enter Employee ID : ")
     role=input("Enter the new designation")
     salary = input("Enter new employee salary : ")
-    update_query=f"UPDTAE employee SET designation='{role}' salary={salary} WHERE employee_id={id};"
+    update_query=f"UPDATE employee SET designation='{role}' salary={salary} WHERE employee_id={id};"
     return update_query
 
 def add_model():
@@ -196,7 +239,7 @@ def update_sale():
     sales_id=input("Enter Sales ID: ")
     status = input("Enter current status: ")
     update_query=f"UPDATE sales SET status = {status} WHERE sales_id = {sales_id};"
-    
+    return update_query
 
 def add_sale():
     client_id = input("Enter Client ID: ")
@@ -228,7 +271,7 @@ def add_veh():
     color = input("Color : ")
     year = input("Year : ")
     price = input("Price : ")
-    update_query = "INSERT INTO vehicle (model_id,color,year,price) VALUES (" + id + ",\'" + color    + "\',\'" + email + "\');"
+    update_query = "INSERT INTO vehicle (model_id,color,year,price) VALUES (" + id + ",\'" + color + "\',\'" + year + "\'," + price + ");"
     return update_query
 
 def del_veh():
@@ -238,7 +281,7 @@ def del_veh():
     return update_query
 
 
-def add_worker():
+def add_factory():
     print("Enter the following details of worker")
     id = input("Employee ID : ")
     veh = input("Vehicle ID : ")
@@ -264,4 +307,4 @@ def main():
 
 
 
-main()
+# main()
