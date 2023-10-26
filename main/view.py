@@ -94,4 +94,4 @@ def main():
     psswd = getpass.getpass("Enter password : ")
     view(usr,psswd)
 
-main()
+# main()
