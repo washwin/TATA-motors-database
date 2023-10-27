@@ -174,7 +174,7 @@ def update(usr,psswd,selected_option, selected_type):
 def add_client(usr,psswd):
     client_window = tk.Tk()
     client_window.title("Add Client")
-    client_window.geometry("400x300")
+    client_window.geometry("400x500")
     # Create labels and entry fields for client details
     client_name_label = tk.Label(client_window, text="Client Name:")
     client_name_entry = tk.Entry(client_window)
@@ -212,7 +212,7 @@ def del_client(usr,psswd):
     # return update_query
     client_window = tk.Tk()
     client_window.title("Delete Client")
-    client_window.geometry("400x250")
+    client_window.geometry("400x500")
     # Create labels and entry fields for client details
     client_id_label = tk.Label(client_window, text="Client ID:")
     client_id_entry = tk.Entry(client_window)
@@ -241,7 +241,7 @@ def update_client(usr,psswd):
     # return update_query
     client_window = tk.Tk()
     client_window.title("Update Client")
-    client_window.geometry("400x250")
+    client_window.geometry("400x500")
     # Create labels and entry fields for client details
 
     client_id_label = tk.Label(client_window, text="Client ID:")
@@ -261,7 +261,7 @@ def update_client(usr,psswd):
         company = company_entry.get()
         email = email_entry.get()
         id=client_id_entry.get()
-        update_query = f"UPDATE client SET client_name='{name}' company_name='{company}' email='{email}' WHERE client_id={id};"
+        update_query = f"UPDATE client SET client_name='{name}',company_name='{company}',email='{email}' WHERE client_id={id};"
         execute(usr,psswd,update_query)
 
     add_button = tk.Button(client_window, text="Update Client", command=lambda:client_to_db(usr,psswd))
@@ -293,7 +293,7 @@ def add_employee(usr,psswd):
     # return update_query
     employee_window = tk.Tk()
     employee_window.title("Add employee")
-    employee_window.geometry("400x250")
+    employee_window.geometry("400x500")
     # Create labels and entry fields for employee details
 
     employee_fname_label = tk.Label(employee_window, text="Employee First Name:")
@@ -311,11 +311,14 @@ def add_employee(usr,psswd):
     addrs_label = tk.Label(employee_window, text="Address:")
     addrs_entry = tk.Entry(employee_window)
 
-    dsgn_label = tk.Label(employee_window, text="Design:")
+    dsgn_label = tk.Label(employee_window, text="Designation:")
     dsgn_entry = tk.Entry(employee_window)
 
-    dept_label = tk.Label(employee_window, text="Department:")
+    dept_label = tk.Label(employee_window, text="DepartmentID:")
     dept_entry = tk.Entry(employee_window)
+
+    salary_label = tk.Label(employee_window, text="Salary:")
+    salary_entry = tk.Entry(employee_window)
 
     def employee_to_db(usr,psswd):
         fname = employee_fname_entry.get()
@@ -325,7 +328,8 @@ def add_employee(usr,psswd):
         email = email_entry.get()
         desgn=dsgn_entry.get()
         dept=dept_entry.get()
-        update_query = "INSERT INTO employee (first_name,last_name,email,phone_no,address,designation,salary,department_id) VALUES (\'" + fname + "\',\'" + lname + "\',\'" + email + "\',"  +phno+ ",\'" +address+ "\',\'" +desgn+ "\'," +dept+ ");"
+        salary=salary_entry.get()
+        update_query = "INSERT INTO employee (first_name,last_name,email,phone_no,address,designation,salary,department_id) VALUES (\'" + fname + "\',\'" + lname + "\',\'" + email + "\',"  +phno+ ",\'" +address+ "\',\'" +desgn+ "\'," +salary+"," +dept+ ");"
         execute(usr,psswd,update_query)
 
     add_button = tk.Button(employee_window, text="Add employee", command=lambda:employee_to_db(usr,psswd))
@@ -341,6 +345,8 @@ def add_employee(usr,psswd):
     addrs_entry.pack()
     email_label.pack()
     email_entry.pack()
+    salary_label.pack()
+    salary_entry.pack()
     dsgn_label.pack()
     dsgn_entry.pack()
     dept_label.pack()
@@ -356,7 +362,7 @@ def del_employee(usr,psswd):
     # return update_query
     employee_window = tk.Tk()
     employee_window.title("Delete employee")
-    employee_window.geometry("400x250")
+    employee_window.geometry("400x500")
     # Create labels and entry fields for employee details
     employee_id_label = tk.Label(employee_window, text="Employee ID:")
     employee_id_entry = tk.Entry(employee_window)
@@ -383,15 +389,15 @@ def update_employee(usr,psswd):
     # return update_query
     employee_window = tk.Tk()
     employee_window.title("Update employee")
-    employee_window.geometry("400x250")
+    employee_window.geometry("400x500")
     # Create labels and entry fields for employee details
     employee_id_label = tk.Label(employee_window, text="Employee ID:")
     employee_id_entry = tk.Entry(employee_window)
 
-    employee_role_label = tk.Label(employee_window, text="Employee First Name:")
+    employee_role_label = tk.Label(employee_window, text="Updated Designation:")
     employee_role_entry = tk.Entry(employee_window)
 
-    employee_salary_label = tk.Label(employee_window, text="Employee Last Name:")
+    employee_salary_label = tk.Label(employee_window, text="Updated salary:")
     employee_salary_entry = tk.Entry(employee_window)
     
     
@@ -400,7 +406,7 @@ def update_employee(usr,psswd):
         role = employee_role_entry.get()
         salary=employee_salary_entry.get()
         id=employee_id_entry.get()
-        update_query = f"UPDATE employee SET designation='{role}' salary={salary} WHERE employee_id={id};"
+        update_query = f"UPDATE employee SET designation='{role}', salary={salary} WHERE employee_id={id};"
         execute(usr,psswd,update_query)
 
     add_button = tk.Button(employee_window, text="Update employee", command=lambda:employee_to_db(usr,psswd))
@@ -429,7 +435,7 @@ def add_model(usr,psswd):
     # return update_query
     model_window = tk.Tk()
     model_window.title("Add model")
-    model_window.geometry("400x250")
+    model_window.geometry("400x500")
     # Create labels and entry fields for model details
 
     model_name_label = tk.Label(model_window, text="Model Name:")
@@ -493,7 +499,7 @@ def del_model(usr,psswd):
     # return update_query
     model_window = tk.Tk()
     model_window.title("Delete model")
-    model_window.geometry("400x250")
+    model_window.geometry("400x500")
     # Create labels and entry fields for model details
     model_id_label = tk.Label(model_window, text="Model ID:")
     model_id_entry = tk.Entry(model_window)
@@ -526,7 +532,7 @@ def update_model(usr,psswd):
     # return update_query
     model_window = tk.Tk()
     model_window.title("Update model")
-    model_window.geometry("400x250")
+    model_window.geometry("400x500")
     # Create labels and entry fields for model details
 
     model_id_label = tk.Label(model_window, text="Model ID:")
@@ -562,7 +568,7 @@ def update_model(usr,psswd):
         zero_to_sixty = zero_to_sixty_entry.get()
         design_year=design_year_entry.get()
         km_per_litres=km_per_litres.get()
-        update_query = f"UPDATE model SET model_name='{name}' design_year={design_year} engine_type='{engine_type}' fuel_type='{fuel_type}' dimensions='{dimensions}' zero_to_sixty={zero_to_sixty} km_per_litres={km_per_litres}   WHERE model_id={id};"
+        update_query = f"UPDATE model SET model_name='{name}' ,design_year={design_year}, engine_type='{engine_type}', fuel_type='{fuel_type}', dimensions='{dimensions}' ,zero_to_sixty={zero_to_sixty} ,km_per_litres={km_per_litres}   WHERE model_id={id};"
 
     add_button = tk.Button(model_window, text="Update model", command=lambda:model_to_db(usr,psswd))
     
@@ -599,7 +605,7 @@ def add_part(usr,psswd):
     # return update_query
     part_window = tk.Tk()
     part_window.title("Add part")
-    part_window.geometry("400x250")
+    part_window.geometry("400x500")
     # Create labels and entry fields for part details
 
     part_name_label = tk.Label(part_window, text="Part Name:")
@@ -651,7 +657,7 @@ def del_part(usr,psswd):
     # return update_query
     part_window = tk.Tk()
     part_window.title("Delete Part")
-    part_window.geometry("400x250")
+    part_window.geometry("400x500")
     # Create labels and entry fields for part details
     part_id_label = tk.Label(part_window, text="Part ID:")
     part_id_entry = tk.Entry(part_window)
@@ -673,7 +679,7 @@ def del_part(usr,psswd):
 def update_part(usr,psswd):
     part_window = tk.Tk()
     part_window.title("Add part")
-    part_window.geometry("400x250")
+    part_window.geometry("400x500")
     # Create labels and entry fields for part details
 
     part_id_label = tk.Label(part_window, text="Part ID:")
@@ -728,7 +734,7 @@ def update_sale(usr,psswd):
     # update_query=f"UPDATE sales SET status = '{status}' WHERE sales_id = {sales_id};"
     sales_window = tk.Tk()
     sales_window.title("Add sales")
-    sales_window.geometry("400x250")
+    sales_window.geometry("400x500")
     # Create labels and entry fields for sales details
 
     sales_id_label = tk.Label(sales_window, text="sales ID:")
@@ -788,7 +794,7 @@ def add_sale(usr,psswd):
     # return update_query
     sales_window = tk.Tk()
     sales_window.title("Add sales")
-    sales_window.geometry("400x250")
+    sales_window.geometry("400x500")
     # Create labels and entry fields for sales details
 
     veh_id_label = tk.Label(sales_window, text="Vehicle ID:")
@@ -847,7 +853,7 @@ def del_sale(usr,psswd):
     # return update_query
     sales_window = tk.Tk()
     sales_window.title("Delete sales")
-    sales_window.geometry("400x250")
+    sales_window.geometry("400x500")
     # Create labels and entry fields for sales details
     sales_id_label = tk.Label(sales_window, text="Sales ID:")
     sales_id_entry = tk.Entry(sales_window)
@@ -875,7 +881,7 @@ def add_supply(usr,psswd):
     # return update_query
     supplier_window = tk.Tk()
     supplier_window.title("Add supplier")
-    supplier_window.geometry("400x250")
+    supplier_window.geometry("400x500")
     # Create labels and entry fields for supplier details
     supplier_name_label = tk.Label(supplier_window, text="Supplier Name:")
     supplier_name_entry = tk.Entry(supplier_window)
@@ -912,7 +918,7 @@ def del_supply(usr,psswd):
     # return update_query
     supplier_window = tk.Tk()
     supplier_window.title("Delete supplier")
-    supplier_window.geometry("400x250")
+    supplier_window.geometry("400x500")
     # Create labels and entry fields for supplier details
     supplier_id_label = tk.Label(supplier_window, text="Supplier ID:")
     supplier_id_entry = tk.Entry(supplier_window)
@@ -941,7 +947,7 @@ def update_supply(usr,psswd):
     # return update_query
     supplier_window = tk.Tk()
     supplier_window.title("Update supplier")
-    supplier_window.geometry("400x250")
+    supplier_window.geometry("400x500")
     # Create labels and entry fields for supplier details
 
     supplier_id_label = tk.Label(supplier_window, text="supplier ID:")
@@ -961,7 +967,7 @@ def update_supply(usr,psswd):
         company = company_entry.get()
         email = email_entry.get()
         id=supplier_id_entry.get()
-        update_query = f"UPDATE supplier SET supplier_name='{name}' company_name='{company}' email='{email}' WHERE supplier_id={id};"
+        update_query = f"UPDATE supplier SET supplier_name='{name}' ,company_name='{company}' ,email='{email}' WHERE supplier_id={id};"
         execute(usr,psswd,update_query)
 
     add_button = tk.Button(supplier_window, text="Update supplier", command=lambda:supplier_to_db(usr,psswd))
@@ -990,7 +996,7 @@ def add_veh(usr,psswd):
     # return update_query
     vehicle_window = tk.Tk()
     vehicle_window.title("Add vehicle")
-    vehicle_window.geometry("400x250")
+    vehicle_window.geometry("400x500")
     # Create labels and entry fields for vehicle details
 
     model_id_label = tk.Label(vehicle_window, text="Model ID:")
@@ -1035,7 +1041,7 @@ def del_veh(usr,psswd):
     # return update_query
     vehicle_window = tk.Tk()
     vehicle_window.title("Delete vehicle")
-    vehicle_window.geometry("400x250")
+    vehicle_window.geometry("400x500")
     # Create labels and entry fields for vehicle details
     vehicle_id_label = tk.Label(vehicle_window, text="vehicle ID:")
     vehicle_id_entry = tk.Entry(vehicle_window)
@@ -1065,7 +1071,7 @@ def update_veh(usr,psswd):
     # return update_query
     vehicle_window = tk.Tk()
     vehicle_window.title("Add vehicle")
-    vehicle_window.geometry("400x250")
+    vehicle_window.geometry("400x500")
     # Create labels and entry fields for vehicle details
     veh_id_label=tk.Label(vehicle_window,text="Vehicle ID")
     veh_id_entry = tk.Entry(vehicle_window)
@@ -1088,7 +1094,7 @@ def update_veh(usr,psswd):
         color=color_entry.get()
         year = year_entry.get()
         price=price_entry.get()
-        update_query = f"UPDATE vehicle SET model_id={id} color='{color}' year={year} price={price} WHERE vehicle_id={veh} ;"
+        update_query = f"UPDATE vehicle SET model_id={id} ,color='{color}' ,year={year} ,price={price} WHERE vehicle_id={veh} ;"
         execute(usr,psswd,update_query)
 
     add_button = tk.Button(vehicle_window, text="Update vehicle", command=lambda:vehicle_to_db(usr,psswd))
@@ -1118,7 +1124,7 @@ def add_factory(usr,psswd):
     # return update_query
     factory_window = tk.Tk()
     factory_window.title("Add factory")
-    factory_window.geometry("400x250")
+    factory_window.geometry("400x500")
     # Create labels and entry fields for factory details
     factory_id_label = tk.Label(factory_window, text="Employee ID:")
     factory_id_entry = tk.Entry(factory_window)
@@ -1157,7 +1163,7 @@ def update_factory(usr,psswd):
     # return update_query
     factory_window = tk.Tk()
     factory_window.title("Add factory")
-    factory_window.geometry("400x250")
+    factory_window.geometry("400x500")
     # Create labels and entry fields for factory details
     factory_id_label = tk.Label(factory_window, text="Employee ID:")
     factory_id_entry = tk.Entry(factory_window)
@@ -1195,7 +1201,7 @@ def add_dept(usr,psswd):
     # return update_query
     dept_window = tk.Tk()
     dept_window.title("Add Department")
-    dept_window.geometry("400x250")
+    dept_window.geometry("400x500")
 
     dept_name_label = tk.Label(dept_window, text="Department Name:")
     dept_name_entry = tk.Entry(dept_window)
@@ -1221,7 +1227,7 @@ def del_dept(usr,psswd):
     # return update_query
     dept_window = tk.Tk()
     dept_window.title("Delete Department")
-    dept_window.geometry("400x250")
+    dept_window.geometry("400x500")
     # Create labels and entry fields for dept details
     dept_id_label = tk.Label(dept_window, text="dept ID:")
     dept_id_entry = tk.Entry(dept_window)
@@ -1248,7 +1254,7 @@ def update_dept(usr,psswd):
     # return update_query
     dept_window = tk.Tk()
     dept_window.title("Add Department")
-    dept_window.geometry("400x250")
+    dept_window.geometry("400x500")
 
     dept_id_label = tk.Label(dept_window, text="Department ID:")
     dept_id_entry = tk.Entry(dept_window)

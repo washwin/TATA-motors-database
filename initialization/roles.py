@@ -36,7 +36,7 @@ def main(usr,psswd):
                             port=5432) as connection:
 
             with connection.cursor() as cursor:
-                # cursor.execute(HR())
+                cursor.execute(HR())
                 cursor.execute(PR())
                 cursor.execute(supplyChain())
                 cursor.execute(boss())
