@@ -14,11 +14,18 @@ def main(usr, psswd):
 
         sql_query = ''' DROP database tatadb '''    
         cursor.execute(sql_query)
-        sql_query = ''' DROP USER IF EXISTS employee'''
+        sql_query = ''' DROP USER IF EXISTS hr'''
+        cursor.execute(sql_query)
+        sql_query = ''' DROP USER IF EXISTS pr'''
+        cursor.execute(sql_query)
+        sql_query = ''' DROP USER IF EXISTS manufacturing'''
+        cursor.execute(sql_query)
+        sql_query = ''' DROP USER IF EXISTS supply_chain'''
         cursor.execute(sql_query)
         sql_query = ''' DROP USER IF EXISTS boss'''
         cursor.execute(sql_query)
         # print("DATABASE DELETED")
+        messagebox.showinfo("TATA Motors Database","DATABASE DELETED")
         connection.close()
 
     except psycopg2.OperationalError as e:
@@ -40,4 +47,4 @@ if __name__ == "__main__":
         password = sys.argv[2]
         main(username, password)
 
-# main("postgres","2202")
+#main("postgres","123456")
