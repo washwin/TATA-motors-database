@@ -14,6 +14,14 @@ def main(usr, psswd):
         cursor.execute(sql_query)
         sql_query = ''' DROP USER IF EXISTS employee'''
         cursor.execute(sql_query)
+        sql_query = ''' DROP USER IF EXISTS hr'''
+        cursor.execute(sql_query)
+        sql_query = ''' DROP USER IF EXISTS pr'''
+        cursor.execute(sql_query)
+        sql_query = ''' DROP USER IF EXISTS manufacturing'''
+        cursor.execute(sql_query)
+        sql_query = ''' DROP USER IF EXISTS supply_chain'''
+        cursor.execute(sql_query)
         sql_query = ''' DROP USER IF EXISTS boss'''
         cursor.execute(sql_query)
         sql_query = ''' CREATE database tatadb ''';    

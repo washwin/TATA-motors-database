@@ -1,2 +1,10 @@
-Brake,1,1,10,19989
-Clutch,1,1,7,3499
+Engine,1,14,10,500000
+Suspension System,2,15,10,100000
+Braking System,3,16,10,72500
+Wheels,4,14,10,50000
+Electrical System,5,15,10,90000
+Lighting System,6,16,10,10000
+Windshield and Glass,7,14,10,37500
+Steering System,8,15,10,75000
+Radiator and Cooling,9,16,10,37500
+Fuel Tank,10,14,10,37500

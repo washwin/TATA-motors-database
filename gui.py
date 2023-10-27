@@ -13,7 +13,7 @@ def run_init_script(username, password, initialization_window):
 
 def init_button_click():
     initilization_window = tk.Toplevel(root)  # Create a new window
-    initilization_window.title("Initilize Database")
+    initilization_window.title("INITIALIZE DATABASE")
     initilization_window.iconbitmap('./blueprints/tata.ico')
     initilization_window.geometry("400x250")
     username_label = tk.Label(initilization_window, text="USERNAME:")
@@ -55,7 +55,7 @@ def update_button_click():
     update_button.pack(pady=20) 
 
 def run_delete_script(username, password, delete_window):
-    script_path = "./main/delete.py"
+    script_path = "./initialization/deletedb.py"
     if os.path.exists(script_path):
         os.system(f"python {script_path} {username} {password}")
     else:

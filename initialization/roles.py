@@ -43,7 +43,7 @@ def main(usr,psswd):
                 cursor.execute(manufacturing())
                 connection.commit()
                 print("ALL ROLES CREATED")
-                messagebox.showinfo("TATA Motors Database","ALL ROLES CREATED")
+                # messagebox.showinfo("TATA Motors Database","ALL ROLES CREATED")
             cursor.close()
         connection.close()
     except psycopg2.OperationalError as e:
