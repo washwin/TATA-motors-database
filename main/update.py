@@ -174,7 +174,7 @@ def update(usr,psswd,selected_option, selected_type):
 def add_client(usr,psswd):
     client_window = tk.Tk()
     client_window.title("Add Client")
-    client_window.geometry("400x250")
+    client_window.geometry("400x300")
     # Create labels and entry fields for client details
     client_name_label = tk.Label(client_window, text="Client Name:")
     client_name_entry = tk.Entry(client_window)
@@ -195,13 +195,13 @@ def add_client(usr,psswd):
     add_button = tk.Button(client_window, text="Add Client", command=lambda:client_to_db(usr,psswd))
     
     # Pack labels, entry fields, and the button
-    client_name_label.pack()
-    client_name_entry.pack()
-    company_label.pack()
-    company_entry.pack()
-    email_label.pack()
-    email_entry.pack()
-    add_button.pack()
+    client_name_label.pack(pady=20)
+    client_name_entry.pack(pady=20)
+    company_label.pack(pady=20)
+    company_entry.pack(pady=20)
+    email_label.pack(pady=20)
+    email_entry.pack(pady=20)
+    add_button.pack(pady=20)
     
     client_window.mainloop()
 
@@ -1288,7 +1288,7 @@ def main(usr,psswd):
         root.mainloop()
     else:
         print("INVALID CREDENTIALS")
-        messagebox.showinfo("TATA Motors Database", "INVALID CREDENTIALS")
+        messagebox.showerror("TATA Motors Database", "INVALID CREDENTIALS")
 
 
 

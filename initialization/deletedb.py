@@ -25,7 +25,7 @@ def main(usr, psswd):
         sql_query = ''' DROP USER IF EXISTS boss'''
         cursor.execute(sql_query)
         # print("DATABASE DELETED")
-        messagebox.showinfo("TATA Motors Database","DATABASE DELETED")
+        messagebox.showinfo("TATA Motors Database", "DATABASE DELETED SUCCESSFULLY")
         connection.close()
 
     except psycopg2.OperationalError as e:
@@ -34,7 +34,7 @@ def main(usr, psswd):
         exit()
     except psycopg2.Error as e:
         # print("!!!!!!!!!!!!!DELETE DATABASE UNSUCCESSFUL!!!!!!!!!!!!!")
-        # print(e)
+        print(e)
         messagebox.showerror("TATA Motors Database", e)
 
 
