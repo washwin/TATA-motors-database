@@ -117,6 +117,7 @@ def main(usr, psswd):
     if are_credentials_valid(usr, psswd):
         root = tk.Tk()
         root.title("VIEW DATABASE")
+        root.iconbitmap("blueprints/tata.ico")
         root.geometry("500x300")
         display(root,usr,psswd)
         root.mainloop()
