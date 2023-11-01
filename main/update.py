@@ -22,18 +22,26 @@ def display(root,usr,psswd):
 
 
 def type(root,selected_option,usr,psswd):
+    type_window = tk.Toplevel(root)
+    type_window.title("TATA Motors Database")
+    type_window.iconbitmap('./blueprints/tata.ico')
+    type_window.geometry("300x150")
+
     selected_type = tk.StringVar()
-    label = tk.Label(root, text=f"SELECTED: {selected_option}")
+    label = tk.Label(type_window, text=f"SELECTED: {selected_option}")
     label.pack()
-    message_label = tk.Label(root, text="SELECT TYPE OF UPDATION")
+    message_label = tk.Label(type_window, text="SELECT TYPE OF UPDATION")
     message_label.pack()
-    radio_button1 = tk.Radiobutton(root, text="Add", variable=selected_type, value="1")
-    radio_button2 = tk.Radiobutton(root, text="Delete", variable=selected_type, value="2")
-    radio_button3 = tk.Radiobutton(root, text="Update", variable=selected_type, value="3")
+    # radio_button1.deselect()
+    # radio_button2.deselect()
+    # radio_button3.deselect()
+    radio_button1 = tk.Radiobutton(type_window, text="Add", variable=selected_type, value="1")
+    radio_button2 = tk.Radiobutton(type_window, text="Delete", variable=selected_type, value="2")
+    radio_button3 = tk.Radiobutton(type_window, text="Update", variable=selected_type, value="3")
     radio_button1.pack()
     radio_button2.pack()
     radio_button3.pack()
-    submit = tk.Button(root, text="SUBMIT", command=lambda: update(usr,psswd,selected_option, selected_type.get()))
+    submit = tk.Button(type_window, text="SUBMIT", command=lambda: update(usr,psswd,selected_option, selected_type.get()))
     submit.pack()
 
 def execute(usr,psswd,update_query):
@@ -1289,7 +1297,8 @@ def main(usr,psswd):
     if are_credentials_valid(usr, psswd):
         root = tk.Tk()
         root.title("Database Updation")
-        root.geometry("600x600")
+        root.geometry("300x300")
+        root.iconbitmap('./blueprints/tata.ico')
         display(root,usr,psswd)
         root.mainloop()
     else:
