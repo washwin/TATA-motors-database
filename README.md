@@ -1,5 +1,11 @@
 # TATA-motors-database
 * We have created a model database for TATA Motors Dharwad
+* Run python gui.py in terminal to open interface
+* Interface can:
+* * create new database
+  * update database
+  * view database
+  * delete database
 * To initialize the database to your postgres admin run init.py using: python init.py
 * Then enter the appropriate credentials
 * This will create a new database called tatadb and fill it with the sample data given
