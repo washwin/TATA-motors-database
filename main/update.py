@@ -60,13 +60,13 @@ def execute(usr,psswd,update_query):
         connection.close()
     except psycopg2.OperationalError as e:
         print("INVALID CREDENTIALS")
-        messagebox.showinfo("TATA Motors Database", "INVALID CREDENTIALS")
+        messagebox.showerror("TATA Motors Database", "INVALID CREDENTIALS\n{}".format(e))
         # print(e)
     except psycopg2.Error as e:
         #print(f"Error updating employee's promotion: {e}")
         print("!!!!!!!!!!!!!UPDATE UNSUCCESSFUL!!!!!!!!!!!!!")
         print(e)
-        messagebox.showinfo("TATA Motors Database", "UPDATE UNSUCCESSFUL")
+        messagebox.showerror("TATA Motors Database", "UPDATE UNSUCCESSFUL\n{}".format(e))
         connection.rollback()
     finally:
         cursor.close()
@@ -577,7 +577,7 @@ def update_model(usr,psswd):
         design_year=design_year_entry.get()
         km_per_litres=km_per_litres.get()
         update_query = f"UPDATE model SET model_name='{name}' ,design_year={design_year}, engine_type='{engine_type}', fuel_type='{fuel_type}', dimensions='{dimensions}' ,zero_to_sixty={zero_to_sixty} ,km_per_litres={km_per_litres}   WHERE model_id={id};"
-
+        execute(usr,psswd,update_query)
     add_button = tk.Button(model_window, text="Update model", command=lambda:model_to_db(usr,psswd))
     
     # Pack labels, entry fields, and the button
